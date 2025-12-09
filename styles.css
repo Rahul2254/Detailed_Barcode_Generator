@@ -1,0 +1,108 @@
+/* ... (unchanged basic setup) ... */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+/* ... (unchanged input section styling) ... */
+.input-section label { display: block; margin-top: 10px; font-weight: bold; }
+.input-section input[type="text"] { width: 100%; padding: 8px; margin-top: 3px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+.input-section button { padding: 10px 15px; margin-top: 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+.input-section button:first-of-type { background-color: #28a745; color: white; margin-right: 10px; }
+#download-btn { background-color: #007bff; color: white; }
+#download-btn:disabled { background-color: #cccccc; cursor: not-allowed; }
+
+
+/* --- Label Preview Styling (CRITICAL FOR 75x38mm) --- */
+
+#label-area {
+    width: 283.5px; 
+    height: 143.7px;
+    margin: 20px auto;
+    border: 1px dashed #999;
+    padding: 2px;
+    box-sizing: border-box;
+    overflow: hidden; /* Important: Text that doesn't fit will be hidden */
+    background-color: #fff;
+    line-height: 1; 
+}
+
+#label-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Barcode Section --- */
+.barcode-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2px;
+}
+
+#barcode-svg {
+    max-width: 90%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- CONSTANT FONT SIZE ADJUSTMENTS --- */
+
+p {
+    margin: 1px 2px;
+    padding: 0;
+    font-size: 9px; /* SET ALL PARAGRAPH TEXT TO 9PX */
+}
+
+/* You can still keep some bolding for emphasis */
+.upc-text {
+    font-weight: bold;
+    margin: -1px 0 0 0;
+}
+
+.sku-text {
+    font-weight: bold;
+}
+
+.mrp-text {
+    font-weight: bold;
+    color: #000;
+}
+
+/* Ensure these elements retain the 9px set on the general 'p' selector */
+.detail-text,
+.small-detail-text,
+.footer-text {
+    font-size: 9px; /* OVERRIDE smaller sizes (7px, 6px) to 9px */
+    font-weight: normal; 
+}
+
+/* The layout logic still applies */
+.split-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
