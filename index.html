@@ -29,11 +29,24 @@
             <label for="mrp-input">4. MRP (e.g., ₹2,999.00):</label>
             <input type="text" id="mrp-input" value="₹2,999.00">
 
+            <label for="doi-input">8. Month and Year of Import/Manufacture (e.g., Dec 2025):</label>
+            <input type="text" id="doi-input" value="Dec 2025">
+
             <label for="net-quantity-input">5. Net Quantity (e.g., 01):</label>
             <input type="text" id="net-quantity-input" value="01">
 
-            <label for="doi-input">6. Date of Import (Month & Year, e.g., Dec 2025):</label>
-            <input type="text" id="doi-input" value="Dec 2025">
+            <label for="stream-select">6. Stream Type (Imported By / Manufactured By):</label>
+             <select id="stream-select">
+                 <option value="Imported By -">Imported By -</option>
+                 <option value="Manufactured By-">Manufactured By-</option>
+             </select>
+            
+            <label for="company-input">7. Company Name (e.g., SHOPDRIVE):</label>
+            <input type="text" id="company-input" value="SHOPDRIVE">
+
+
+            
+            
             
             <button onclick="generateLabel()">Generate & Preview Label</button>
             <button onclick="downloadPDF()" id="download-btn" disabled>Download PDF (75mm x 38mm)</button>
@@ -53,14 +66,17 @@
                 <p id="label-sku" class="sku-text"></p>
                 <p id="label-package" class="detail-text"></p>
                 <p id="label-mrp" class="mrp-text"></p>
-                
+
                 <div class="split-line">
-                    <p class="small-detail-text">Imported By - SHOPDRIVE</p>
-                    <p id="label-quantity" class="small-detail-text"></p>
+                    <p class="small-detail-text">
+                        <span id="label-doi-prefix">Date of Import - </span> 
+                        <span id="label-doi"></span>
+                    </p>
                 </div>
                 
                 <div class="split-line">
-                    <p class="small-detail-text">Date of Import - <span id="label-doi"></span></p>
+                     <p id="label-stream" class="small-detail-text"></p> 
+                     <p id="label-quantity" class="small-detail-text"></p>
                 </div>
 
                 <p class="footer-text">ShopDrive Sr No 37 Near Balaji Hotel, Pune 48</p>
