@@ -87,10 +87,7 @@ p {
     font-weight: bold;
 }
 
-.mrp-text {
-    font-weight: bold;
-    color: #000;
-}
+
 
 /* Ensure these elements retain the 9px set on the general 'p' selector */
 .detail-text,
@@ -107,3 +104,4 @@ p {
     width: 100%;
 
 }
+
