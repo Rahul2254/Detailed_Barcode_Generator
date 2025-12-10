@@ -3,19 +3,22 @@ let labelGenerated = false;
 
 // --- Main Generation Function ---
 function generateLabel() {
-    // 1. Get all 6 inputs
+    // 1. Get all inputs
     const sku = document.getElementById('sku-input').value.trim().toUpperCase();
     const upc = document.getElementById('upc-input').value.trim();
     const packageContent = document.getElementById('package-content-input').value.trim();
     const mrp = document.getElementById('mrp-input').value.trim();
     const netQuantity = document.getElementById('net-quantity-input').value.trim();
+
+    const streamType = document.getElementById('stream-select').value; 
+    const companyName = document.getElementById('company-input').value.trim(); 
     const dateOfImport = document.getElementById('doi-input').value.trim();
-    
+
     const downloadBtn = document.getElementById('download-btn');
     
     // Simple validation
-    if (!sku || !upc || !packageContent || !mrp || !netQuantity || !dateOfImport) {
-        alert("Please fill in all six required input fields.");
+    if (!sku || !upc || !packageContent || !mrp || !netQuantity || !companyName || !dateOfImport) {
+        alert("Please fill in all required input fields (including Company Name).");
         return;
     }
     
@@ -24,23 +27,43 @@ function generateLabel() {
         return;
     }
 
-    // 2. Update Label Text Content
+    // 2. Update Label Text Content 
     document.getElementById('label-sku').textContent = sku;
     document.getElementById('label-package').textContent = `Package Content - ${packageContent}`;
     document.getElementById('label-mrp').textContent = `MRP ${mrp} (Incl of All Taxes)`;
-    document.getElementById('label-quantity').textContent = `Net Quantity - ${netQuantity}`;
+    
+    // *** MODIFIED LOGIC: Update date label prefix ***
+
+    // Determine the correct date label prefix based on the stream type
+    let dateLabelPrefix = 'Month and Year of Import - ';
+    if (streamType === 'Manufactured By-') {
+        dateLabelPrefix = 'Month and Year of Manufacturing - ';
+    }
+    
+    // Set the date line dynamically 
+    const doiPrefixElement = document.getElementById('label-doi-prefix');
+    if (doiPrefixElement) {
+        doiPrefixElement.textContent = dateLabelPrefix;
+    } 
+    
     document.getElementById('label-doi').textContent = dateOfImport;
+
+    // *** END OF MODIFIED LOGIC ***
+    
+    // Set the dynamic stream line
+    document.getElementById('label-stream').textContent = `${streamType} ${companyName.toUpperCase()}`;
+    
+    document.getElementById('label-quantity').textContent = `Net Quantity - ${netQuantity}`;
     document.getElementById('label-upc').textContent = upc; // For the text below the barcode
 
     // 3. Generate Barcode using jsBarcode
     try {
-        // Using CODE128 for robust generation of custom 8-digit codes
         JsBarcode("#barcode-svg", upc, {
             format: "CODE128", 
             displayValue: false, 
-            width: 1.5,          
-            height: 40,          
-            margin: 0            // Minimal margin to save space
+            width: 1.5,      
+            height: 40,      
+            margin: 0         // Minimal margin to save space
         });
         
         labelGenerated = true;
