@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 </head>
 <body>
 
@@ -17,44 +16,40 @@
         <h1>📦 Detailed Product Label Generator</h1>
         
         <div class="input-section">
-            <label for="sku-input">1. SKU (e.g., SD_TK_BACKPACK_NOVA_BLACK):</label>
+            <label for="sku-input">1. SKU (Product Code):</label>
             <input type="text" id="sku-input" value="SD_TK_BACKPACK_NOVA_BLACK">
             
-            <label for="upc-input">2. UPC Code (8 Digits):</label>
-            <input type="text" id="upc-input" maxlength="8" value="20944781">
+            <label for="upc-input">2. Barcode Data (Any length/characters):</label>
+            <input type="text" id="upc-input" value="20944781">
             
-            <label for="package-content-input">3. Package Content (e.g., Laptop Bag):</label>
+            <label for="package-content-input">3. Package Content:</label>
             <input type="text" id="package-content-input" value="Laptop Bag">
 
             <label for="mrp-input">4. MRP (e.g., ₹2,999.00):</label>
             <input type="text" id="mrp-input" value="₹2,999.00">
 
-            <label for="doi-input">8. Month and Year of Import/Manufacture (e.g., Dec 2025):</label>
+            <label for="doi-input">5. Month & Year (Import/Mfg):</label>
             <input type="text" id="doi-input" value="Dec 2025">
 
-            <label for="net-quantity-input">5. Net Quantity (e.g., 01):</label>
+            <label for="net-quantity-input">6. Net Quantity:</label>
             <input type="text" id="net-quantity-input" value="01">
 
-            <label for="stream-select">6. Stream Type (Imported By / Manufactured By):</label>
+            <label for="stream-select">7. Stream Type:</label>
              <select id="stream-select">
                  <option value="Imported By -">Imported By -</option>
                  <option value="Manufactured By-">Manufactured By-</option>
              </select>
             
-            <label for="company-input">7. Company Name (e.g., SHOPDRIVE):</label>
+            <label for="company-input">8. Company Name:</label>
             <input type="text" id="company-input" value="SHOPDRIVE">
 
-
-            
-            
-            
             <button onclick="generateLabel()">Generate & Preview Label</button>
             <button onclick="downloadPDF()" id="download-btn" disabled>Download PDF (75mm x 38mm)</button>
         </div>
 
         <hr>
 
-        <h2>🏷️ Label Preview (75mm x 38mm Aspect Ratio)</h2>
+        <h2>🏷️ Label Preview (75mm x 38mm)</h2>
         
         <div id="label-area">
             <div id="label-content">
@@ -69,7 +64,7 @@
 
                 <div class="split-line">
                     <p class="small-detail-text">
-                        <span id="label-doi-prefix">Date of Import - </span> 
+                        <span id="label-doi-prefix">Month and Year of Import - </span> 
                         <span id="label-doi"></span>
                     </p>
                 </div>
@@ -81,12 +76,10 @@
 
                 <p class="footer-text">ShopDrive Sr No 37 Near Balaji Hotel, Pune 48</p>
                 <p class="footer-text">Customer Care: shopdrivecare@gmail.com 8999294802</p>
-
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
