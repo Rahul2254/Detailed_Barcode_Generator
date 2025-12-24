@@ -91,7 +91,7 @@ p {
     word-break: break-all;
 }
 
-.sku-text, .mrp-text {
+.sku-text {
     font-weight: bold;
 }
 
@@ -105,3 +105,4 @@ p {
     justify-content: space-between;
     width: 100%;
 }
+
